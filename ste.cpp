@@ -32,14 +32,17 @@ public:
 		return true;	
 	}
 	int getLineCount() {return contents.size();}
+	string getLine(int line) {return contents.at(line);}
 	string getViewport(int line) {
 		if (line > getLineCount()) {
 			return ""; // nothing to show
 		}
+		string out = "";
 		for (int y = line; y < LINES; y++) {
 			if (y > getLineCount()) {
-				
+				return out; // EOF
 			}
+			out += getLine(y) + "\n";
 		}
 	}
 	
